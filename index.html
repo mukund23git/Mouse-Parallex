@@ -1,0 +1,75 @@
+<!-- Filename:index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: sans-serif;
+		}
+        
+		body {
+			background-image: linear-gradient(rgb(149, 0, 248), rgb(255, 33, 126));
+		}
+
+		.mouse_move {
+			position: relative;
+			width: 100%;
+			height: 100vh;
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.mouse_move h2 {
+			position: relative;
+			font-size: 100px;
+			color: white;
+		}
+
+		.mouse_move img {
+			position: absolute;
+		}
+
+		#img1 {
+			top: 350px;
+			left: 80px;
+			height: 250px;
+			width: 250px;
+		}
+
+		#img2 {
+			bottom: 20px;
+			right: 50px;
+			height: 400px;
+			width: 400px;
+		}
+	</style>
+	<title>Parallax</title>
+</head>
+
+<body>
+	<div class="mouse_move">
+		<img id="img1" src="action kamen.png" class="mouse"
+			value="5" />
+		<h2 style="font-size: 3rem; width: 50rem;">Jab Dushman Takatwar ho to side change kar lena chaiye - Buri Buri Zaemon</h2>
+		<img id="img2" src="Buriburizaemon.webp" class="mouse" value="-5" />
+	</div>
+
+	<script type="text/javascript">
+		document.addEventListener("mousemove", parallax);
+		function parallax(event) {
+			this.querySelectorAll(".mouse").forEach((shift) => {
+				const position = shift.getAttribute("value");
+				const x = (window.innerWidth - event.pageX * position) / 90;
+				const y = (window.innerHeight - event.pageY * position) / 90;
+
+				shift.style.transform = `translateX(${x}px) translateY(${y}px)`;
+			});
+		}
+	</script>
+</body>
+</html>
